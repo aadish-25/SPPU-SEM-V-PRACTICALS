@@ -168,3 +168,44 @@ int main()
 
     return 0;
 }
+
+// -------- OUTPUT --------
+// Enter the size of each block : 
+// 100
+// 500
+// 200
+// 300
+// 600
+// Enter the size of each process : 
+// 212
+// 417
+// 112
+// 426
+
+// First Fit :
+// Process No.     Process Size    Block No.
+// 1               212             2
+// 2               417             5
+// 3               112             3
+// 4               426             Not Allocated
+
+// Best Fit :
+// Process No.     Process Size    Block No.
+// 1               212             4
+// 2               417             2
+// 3               112             3
+// 4               426             5
+
+// Worst Fit :
+// Process No.     Process Size    Block No.
+// 1               212             5
+// 2               417             2
+// 3               112             4
+// 4               426             Not Allocated
+
+// Next Fit :
+// Process No.     Process Size    Block No.
+// 1               212             2
+// 2               417             5
+// 3               112             3
+// 4               426             Not Allocated
