@@ -52,3 +52,31 @@ public class Main {
         }
     }
 }
+
+// OUTPUT
+
+// Macro Name Table (MNT):
+// INCR -> MDT Index: 0
+
+// Macro Definition Table (MDT):
+// 0 INCR &A
+// 1 LOAD &A
+// 2 ADD 1
+// 3 STORE &A
+// 4 MEND
+
+// Intermediate Code:
+// START
+// INCR X
+// INCR Y
+// END
+
+// Expanded Code After Pass-II:
+// START
+// LOAD X
+// ADD 1
+// STORE X
+// LOAD Y
+// ADD 1
+// STORE Y
+// END
