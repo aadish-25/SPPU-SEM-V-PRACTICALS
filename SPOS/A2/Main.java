@@ -24,19 +24,19 @@ public class Main {
         // Pass-I
         MacroProcessorPass1.Result pass1Result = MacroProcessorPass1.process(macroInput);
 
-        // Debug: Print MNT
+        // Print MNT
         System.out.println("Macro Name Table (MNT):");
         for (Map.Entry<String, Integer> entry : pass1Result.MNT.entrySet()) {
             System.out.println(entry.getKey() + " -> MDT Index: " + entry.getValue());
         }
 
-        // Debug: Print MDT
+        // Print MDT
         System.out.println("\nMacro Definition Table (MDT):");
         for (int i = 0; i < pass1Result.MDT.size(); i++) {
             System.out.println(i + " " + pass1Result.MDT.get(i));
         }
 
-        // Debug: Print Intermediate Code
+        // Print Intermediate Code
         System.out.println("\nIntermediate Code:");
         for (String line : pass1Result.intermediateCode) {
             System.out.println(line);
