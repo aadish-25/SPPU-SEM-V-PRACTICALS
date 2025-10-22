@@ -153,7 +153,7 @@ void roundRobin(Process p[], int n, int quantum) {
     int currentTime = 0;
     int completed = 0;
     int front = 0, rear = 0;
-    int readyQueue[n];
+    int readyQueue[50];
 
     sortByArrival(p, n);
 
@@ -184,7 +184,7 @@ void roundRobin(Process p[], int n, int quantum) {
             for(int i = 0; i < n; i++) {
                 if(p[i].AT <= currentTime && p[i].RT > 0) {
                     bool inQueue = false;
-                    for(int j = front; j < rear; j++) {
+                    for(int j = 0; j < rear; j++) {
                         if(readyQueue[j] == i) inQueue = true;
                     }
                     if(!inQueue) readyQueue[rear++] = i;
@@ -226,21 +226,58 @@ int main() {
     cout << "Enter the time quantum for Round Robin : ";
     cin >> quantum;
 
-    cout << "------FCFS (Non pre-emptive)------";
+    cout << "\n------FCFS (Non pre-emptive)------";
     FCFS(p, n);
     reset(p, n);
 
-    cout << "------Priority Scheduling (Non premptive)------";
+    cout << "\n------Priority Scheduling (Non premptive)------";
     priorityScheduling(p, n);
     reset(p, n);
 
-    cout << "------SJF (Premptive)------";
+    cout << "\n------SJF (Premptive)------";
     SJF(p, n);
     reset(p, n);
 
-    cout << "------Round Robin (Premptive)------";
+    cout << "\n------Round Robin (Premptive)------";
     roundRobin(p, n, quantum);
     reset(p, n);
 
     return 0;
 }
+
+// OUTPUT
+
+// Enter total number of processes : 4
+// Enter arrival time, burst time and priority for Process 0 : 0 5 5
+// Enter arrival time, burst time and priority for Process 1 : 3 4 2
+// Enter arrival time, burst time and priority for Process 2 : 4 1 1
+// Enter arrival time, burst time and priority for Process 3 : 6 8 4
+// Enter the time quantum for Round Robin : 3
+
+// ------FCFS (Non pre-emptive)------
+// P#      AT      BT      CT      TAT     WT
+// 0       0       5       5       5       0
+// 1       3       4       9       6       2
+// 2       4       1       10      6       5
+// 3       6       8       18      12      4
+
+// ------Priority Scheduling (Non premptive)------
+// P#      AT      BT      Priority        CT      TAT     WT
+// 0       0       5       5               5       5       0
+// 1       3       4       2               10      7       3
+// 2       4       1       1               6       2       1
+// 3       6       8       4               18      12      4
+
+// ------SJF (Premptive)------
+// P#      AT      BT      CT      TAT     WT
+// 0       0       5       5       5       0
+// 1       3       4       10      7       3
+// 2       4       1       6       2       1
+// 3       6       8       18      12      4
+
+// ------Round Robin (Premptive)------
+// P#      AT      BT      CT      TAT     WT
+// 0       0       5       8       8       3
+// 1       3       4       13      10      6
+// 2       4       1       9       5       4
+// 3       6       8       18      12      4
