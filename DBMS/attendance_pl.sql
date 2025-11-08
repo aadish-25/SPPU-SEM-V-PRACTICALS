@@ -34,10 +34,10 @@ BEGIN
     SELECT attendance into student_attendance FROM student where rollno = input_rollno;
 
     IF student_attendance < 75 then
-    UPDATE student SET status = 'Term not granted' where rollno = input_rollno;
+    UPDATE student SET status = 'Detained' where rollno = input_rollno;
     DBMS_OUTPUT.PUT_LINE('Term status updated for roll no ' || input_rollno || ': ' || 'Term not granted');
     ELSE
-    UPDATE student SET status = 'Term granted' where rollno = input_rollno;
+    UPDATE student SET status = 'Not detained' where rollno = input_rollno;
     DBMS_OUTPUT.PUT_LINE('Term status updated for roll no ' || input_rollno || ': ' || 'Term granted');
     END IF;
 
@@ -63,10 +63,10 @@ BEGIN
         EXIT when CC%NOTFOUND;
 
         IF attendance1 < 75 then
-        UPDATE student SET status = 'Term not granted' where rollno = rollno1;
+        UPDATE student SET status = 'Detained' where rollno = rollno1;
         DBMS_OUTPUT.PUT_LINE('Term status updated for roll no ' || rollno1 || ': ' || 'Term not granted');
         ELSE
-        UPDATE student SET status = 'Term granted' where rollno = rollno1;
+        UPDATE student SET status = 'Not detained' where rollno = rollno1;
         DBMS_OUTPUT.PUT_LINE('Term status updated for roll no ' || rollno1 || ': ' || 'Term granted');
         END IF;
     END LOOP;
