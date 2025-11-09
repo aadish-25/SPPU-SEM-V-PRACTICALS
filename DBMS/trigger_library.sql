@@ -1,7 +1,7 @@
---  Trigger: Create a row level trigger for the CUSTOMERS table that
--- would fire INSERT or UPDATE or DELETE operations performed on the
--- CUSTOMERS table. This trigger will display the salary difference
--- between the old values and new values.
+-- Write a Row Level Before and After Trigger on Library table. The
+-- System should keep track of the records that are being updated or
+-- deleted. The old value of updated or deleted records should be
+-- added in Library_Audit table.
 
 -- CREATE TABLES
 CREATE TABLE library(
