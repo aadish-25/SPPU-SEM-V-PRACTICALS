@@ -1,5 +1,5 @@
 # Install packages : 
-# pip install mysql-connector
+# pip install mysql-connector or pip install mysql-connector-python
 
 # # Remove root password : 
 # sudo mysql -u root -p
@@ -35,4 +35,5 @@ mycursor.execute(sql)
 mydb.commit()
 
 print(mycursor.rowcount, "record inserted.")
+
 
