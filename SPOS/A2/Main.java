@@ -2,7 +2,7 @@
 // definitions) should be input for Pass-II.
 
 // Pass 1 Assembler - Study the assembly code and build tables: MNT, MDT, Symbol Table
-// Pass 2 Assembler - Expand macro calls using the tables and generate final machine code
+// Pass 2 Assembler - Expand macro calls using the tables and generate final machine code 
 
 import java.util.*;
 
