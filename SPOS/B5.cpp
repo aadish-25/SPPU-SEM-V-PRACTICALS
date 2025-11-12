@@ -4,14 +4,14 @@
 using namespace std;
 
 struct Process {
-    int id;
-    int AT;
-    int BT;
-    int CT;
-    int TAT;
-    int WT;
-    int RT;
-    int priority;
+    int id = 0;
+    int AT = 0;
+    int BT = 0;
+    int CT = 0;
+    int TAT = 0;
+    int WT = 0;
+    int RT = 0;
+    int priority = 0;
 };
 
 void reset(Process p[], int n) {
@@ -281,4 +281,5 @@ int main() {
 // 1       3       4       13      10      6
 // 2       4       1       9       5       4
 // 3       6       8       18      12      4
+
 
