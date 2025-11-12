@@ -184,7 +184,7 @@ void roundRobin(Process p[], int n, int quantum) {
             for(int i = 0; i < n; i++) {
                 if(p[i].AT <= currentTime && p[i].RT > 0) {
                     bool inQueue = false;
-                    for(int j = 0; j < rear; j++) {
+                    for(int j = front; j < rear; j++) {
                         if(readyQueue[j] == i) inQueue = true;
                     }
                     if(!inQueue) readyQueue[rear++] = i;
@@ -281,5 +281,6 @@ int main() {
 // 1       3       4       13      10      6
 // 2       4       1       9       5       4
 // 3       6       8       18      12      4
+
 
 
