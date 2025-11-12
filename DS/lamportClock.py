@@ -17,21 +17,19 @@ class Process:
         self.clock = LamportClock()
 
     def send_message(self, receiver):
-        before = self.clock.timestamp
-        sent_time = self.clock.increment()
         print(f"\nEvent: SEND")
         print(f"Process {self.process_id} → Process {receiver.process_id}")
-        print(f"Local clock before: {before}")
-        print(f"Local clock after : {sent_time}")
-        receiver.receive_message(sent_time, self.process_id)
+        print(f"Local clock before: {self.clock.timestamp}")
+        self.clock.increment()
+        print(f"Local clock after : {self.clock.timestamp}")
+        receiver.receive_message(self.clock.timestamp, self.process_id)
 
-    def receive_message(self, message_timestamp, sender_id):
-        before = self.clock.timestamp
-        new_time = self.clock.update(message_timestamp)
+    def receive_message(self, received_timestamp, sender_id):
         print(f"\nEvent: RECEIVE")
         print(f"Process {self.process_id} ← Process {sender_id}")
-        print(f"Local clock before: {before}")
-        print(f"Local clock after : {new_time}")
+        print(f"Local clock before: {self.clock.timestamp}")
+        self.clock.update(received_timestamp)
+        print(f"Local clock after : {self.clock.timestamp}")
 
 
 def show_all_clocks(processes):
@@ -64,14 +62,10 @@ def menu():
 
 def main():
     # Ask user how many processes to simulate
-    while True:
-        try:
-            n = int(input("Enter number of processes to create: "))
-            if n > 0:
-                break
-            print("Enter a positive number.")
-        except ValueError:
-            print("Invalid input. Please enter a number.")
+    n = int(input("Enter total number of processes (min 2) : "))
+    if(n<2):
+        print("Invalid input")
+        exit()
 
     processes = {i: Process(i) for i in range(1, n + 1)}
     print(f"{n} processes created successfully.")
